@@ -68,8 +68,8 @@ pipeline {
             steps {
                 script{echo 'deploying the application'
                 withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-                //    sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
-            //        sh "docker push bhavyghaghra/spring-boot:${IMAGE_NAME}"
+                    sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
+                    sh "docker push bhavyghaghra/spring-boot:${IMAGE_NAME}"
                 }}
                 
              }
@@ -94,17 +94,17 @@ pipeline {
 //             }
 //         }
     }
-    post{
-        always{
-            echo 'Executing always...'
-        }
-        success{
-            echo 'Executing success'
-        }
-        failure{
-            echo 'Executing failure'
-        }
-    }
+//     post{
+//         always{
+//             echo 'Executing always...'
+//         }
+//         success{
+//             echo 'Executing success'
+//         }
+//         failure{
+//             echo 'Executing failure'
+//         }
+//     }
 }
 
 // pipeline {
